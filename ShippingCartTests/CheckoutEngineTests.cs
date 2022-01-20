@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using AutoMapper;
 using ShoppingCartService.BusinessLogic;
-using ShoppingCartService.Controllers.Models;
 using ShoppingCartService.DataAccess.Entities;
 using ShoppingCartService.Mapping;
 using ShoppingCartService.Models;
@@ -38,8 +37,7 @@ namespace ShippingCartTests
         public void Premium_customer_has_discount()
         {
             var sut = BuildCheckOutEngine();
-            var cart = BuildCart();
-            cart.CustomerType = CustomerType.Premium;
+            var cart = BuildCart(customerType: CustomerType.Premium);
 
             var checkoutDto = sut.CalculateTotals(cart);
 
@@ -50,8 +48,7 @@ namespace ShippingCartTests
         public void Standard_customer_has_no_discount()
         {
             var sut = BuildCheckOutEngine();
-            var cart = BuildCart();
-            cart.CustomerType = CustomerType.Standard;
+            var cart = BuildCart(customerType: CustomerType.Standard);
 
             var checkoutDto = sut.CalculateTotals(cart);
 
@@ -68,18 +65,18 @@ namespace ShippingCartTests
             uint item2Quantity, float item2Price,
             ShippingMethod shippingMethod)
         {
-            var sut = BuildCheckOutEngine();
-            var cart = BuildCart();
-            cart.CustomerType = CustomerType.Premium;
-            cart.ShippingMethod = shippingMethod;
-            cart.Items = BuildItems(new List<Tuple<uint, float>>
+            var items = BuildItems(new List<Tuple<uint, float>>
             {
                 new (item1Quantity, item1Price),
                 new (item2Quantity, item2Price),
             });
+            var cart = BuildCart(customerType: CustomerType.Premium,
+                shippingMethod: shippingMethod,
+                items: items);
+            var shippingCost = new ShippingCalculator().CalculateShippingCost(cart);
+            var sut = BuildCheckOutEngine();
 
             var checkoutDto = sut.CalculateTotals(cart);
-            var shippingCost = new ShippingCalculator().CalculateShippingCost(cart);
 
             // Note: Currency should never be represented with floating-point values. Having
             // to use Math.Round() to get the expected value to equal the calculated value
@@ -101,18 +98,18 @@ namespace ShippingCartTests
             uint item2Quantity, float item2Price,
             ShippingMethod shippingMethod)
         {
-            var sut = BuildCheckOutEngine();
-            var cart = BuildCart();
-            cart.CustomerType = CustomerType.Standard;
-            cart.ShippingMethod = shippingMethod;
-            cart.Items = BuildItems(new List<Tuple<uint, float>>
+            var items = BuildItems(new List<Tuple<uint, float>>
             {
                 new (item1Quantity, item1Price),
                 new (item2Quantity, item2Price),
             });
+            var cart = BuildCart(customerType: CustomerType.Standard,
+                shippingMethod: shippingMethod,
+                items: items);
+            var shippingCost = new ShippingCalculator().CalculateShippingCost(cart);
+            var sut = BuildCheckOutEngine();
 
             var checkoutDto = sut.CalculateTotals(cart);
-            var shippingCost = new ShippingCalculator().CalculateShippingCost(cart);
             var expected = Math.Round(shippingCost +
                 item1Quantity * item1Price +
                 item2Quantity * item2Price, 2);
@@ -147,18 +144,35 @@ namespace ShippingCartTests
         /// Build a cart with test values.
         /// </summary>
         /// <returns></returns>
-        private Cart BuildCart()
+        private Cart BuildCart(CustomerType customerType = CustomerType.Standard,
+            ShippingMethod shippingMethod = ShippingMethod.Standard,
+            Address address = null,
+            List<Item> items = null)
         {
-            var cartId = "cart83748";
-            var customerId = "ifjj3223";
-            var customerType = CustomerType.Standard;
-            var shippingMethod = ShippingMethod.Express;
-            var address = new Address
+            var cartId = "";
+            var customerId = "";
+            if (address is null)
             {
-                Street = "Street",
-                City = "Dallas",
-                Country = "USA",
-            };
+                address = new Address
+                {
+                    Street = "Street",
+                    City = "Dallas",
+                    Country = "USA",
+                };
+            }
+            if (items is null)
+            {
+                items = new List<Item>
+                {
+                    new()
+                    {
+                        Quantity = 2,
+                        Price = 10.00,
+                        ProductId = "",
+                        ProductName = "",
+                    }
+                };
+            }
             var cart = new Cart
             {
                 Id = cartId,
@@ -166,6 +180,7 @@ namespace ShippingCartTests
                 CustomerType = customerType,
                 ShippingMethod = shippingMethod,
                 ShippingAddress = address,
+                Items = items,
             };
             return cart;
         }
