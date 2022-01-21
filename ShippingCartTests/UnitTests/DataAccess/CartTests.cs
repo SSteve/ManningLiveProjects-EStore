@@ -3,7 +3,7 @@ using ShoppingCartService.DataAccess.Entities;
 using ShoppingCartService.Models;
 using Xunit;
 
-namespace ShippingCartTests
+namespace ShippingCartTests.UnitTests
 {
     /// <summary>
     /// The Cart class defines Equals and GetHashCode which need to be tested.

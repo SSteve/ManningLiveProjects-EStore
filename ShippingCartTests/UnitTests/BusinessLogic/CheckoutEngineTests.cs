@@ -7,7 +7,7 @@ using ShoppingCartService.Mapping;
 using ShoppingCartService.Models;
 using Xunit;
 
-namespace ShippingCartTests
+namespace ShippingCartTests.UnitTests
 {
     public class CheckoutEngineTests
     {

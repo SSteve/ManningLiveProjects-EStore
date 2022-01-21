@@ -4,7 +4,7 @@ using Xunit;
 
 // "sut" stands for "system under test"
 
-namespace ShippingCartTests
+namespace ShippingCartTests.UnitTests
 {
     public class AddressValidatorTests
     {

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using MongoDB.Driver;
-using ShippingCartTests.Fixtures;
+using ShippingCartTests.IntegrationTests.Fixtures;
 using ShoppingCartService.Config;
 using ShoppingCartService.DataAccess;
 using ShoppingCartService.DataAccess.Entities;
 using Xunit;
 
-namespace ShippingCartTests.DataAccess
+namespace ShippingCartTests.IntegrationTests.DataAccess
 {
     [Collection("Dockerized MongoDB collection")]
     public class ShoppingCartRepositoryIntegrationTests : IDisposable

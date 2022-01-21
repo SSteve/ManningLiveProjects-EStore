@@ -23,11 +23,19 @@
     <ProjectReference Include="..\ShoppingCartService\ShoppingCartService.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="DataAccess\" />
-    <None Remove="Fixtures\" />
+    <None Remove="UnitTests\" />
+    <None Remove="IntegrationTests\" />
+    <None Remove="IntegrationTests\DataAccess\" />
+    <None Remove="IntegrationTests\Fixtures\" />
+    <None Remove="UnitTests\BusinessLogic\" />
+    <None Remove="UnitTests\DataAccess\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataAccess\" />
-    <Folder Include="Fixtures\" />
+    <Folder Include="UnitTests\" />
+    <Folder Include="IntegrationTests\" />
+    <Folder Include="IntegrationTests\DataAccess\" />
+    <Folder Include="IntegrationTests\Fixtures\" />
+    <Folder Include="UnitTests\BusinessLogic\" />
+    <Folder Include="UnitTests\DataAccess\" />
   </ItemGroup>
 </Project>

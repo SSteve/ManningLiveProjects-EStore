@@ -1,7 +1,8 @@
-﻿using ShippingCartTests.Fixtures;
+﻿using ShippingCartTests.IntegrationTests.Fixtures;
+
 using Xunit;
 
-namespace ShoppingCartTests.Fixtures
+namespace ShoppingCartTests.IntegrationTests.Fixtures
 {
     /// <summary>
     /// Will run once for all of the tests classes with this attribute

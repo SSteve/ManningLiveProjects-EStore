@@ -8,7 +8,7 @@ using MongoDB.Driver;
 using ShoppingCartService.Config;
 using ShoppingCartService.Mapping;
 
-namespace ShippingCartTests.Fixtures
+namespace ShippingCartTests.IntegrationTests.Fixtures
 {
     public class DockerMongoFixture : IDisposable
     {
