@@ -1,7 +1,6 @@
-﻿using System;
-using Xunit;
+﻿using ShoppingCartService.BusinessLogic.Validation;
 using ShoppingCartService.Models;
-using ShoppingCartService.BusinessLogic.Validation;
+using Xunit;
 
 // "sut" stands for "system under test"
 

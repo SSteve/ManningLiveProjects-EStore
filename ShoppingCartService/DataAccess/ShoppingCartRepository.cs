@@ -15,7 +15,7 @@ namespace ShoppingCartService.DataAccess
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-            
+
             _carts = database.GetCollection<Cart>(settings.CollectionName);
         }
 

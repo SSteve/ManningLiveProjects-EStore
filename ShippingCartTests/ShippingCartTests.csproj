@@ -22,4 +22,12 @@
   <ItemGroup>
     <ProjectReference Include="..\ShoppingCartService\ShoppingCartService.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="DataAccess\" />
+    <None Remove="Fixtures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataAccess\" />
+    <Folder Include="Fixtures\" />
+  </ItemGroup>
 </Project>
