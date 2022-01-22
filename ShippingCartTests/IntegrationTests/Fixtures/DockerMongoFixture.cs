@@ -27,6 +27,13 @@ namespace ShippingCartTests.IntegrationTests.Fixtures
             CollectionName = "ShoppingCart",
         };
 
+        public CouponDatabaseSettings GetCouponDatabaseSettings() => new()
+        {
+            DatabaseName = "CouponDb",
+            ConnectionString = ConnectionString,
+            CollectionName = "Coupon",
+        };
+
         public DockerMongoFixture()
         {
             var config = new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfile()));

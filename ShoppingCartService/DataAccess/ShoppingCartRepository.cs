@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MongoDB.Driver;
 using ShoppingCartService.Config;
 using ShoppingCartService.DataAccess.Entities;
-using ShoppingCartService.Models;
 
 namespace ShoppingCartService.DataAccess
 {

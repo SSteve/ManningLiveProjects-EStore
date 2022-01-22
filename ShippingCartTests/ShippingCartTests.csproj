@@ -29,6 +29,7 @@
     <None Remove="IntegrationTests\Fixtures\" />
     <None Remove="UnitTests\BusinessLogic\" />
     <None Remove="UnitTests\DataAccess\" />
+    <None Remove="Builders\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UnitTests\" />
@@ -37,5 +38,6 @@
     <Folder Include="IntegrationTests\Fixtures\" />
     <Folder Include="UnitTests\BusinessLogic\" />
     <Folder Include="UnitTests\DataAccess\" />
+    <Folder Include="Builders\" />
   </ItemGroup>
 </Project>

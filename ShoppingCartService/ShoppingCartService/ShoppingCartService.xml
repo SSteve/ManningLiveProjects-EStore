@@ -46,6 +46,13 @@
             </summary>
             <param name="id">Shopping cart id</param>
         </member>
+        <member name="M:ShoppingCartService.DataAccess.Entities.Coupon.Equals(ShoppingCartService.DataAccess.Entities.Coupon)">
+            <summary>
+            Coupons are considered equal if their Id properties are the same.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
         <member name="T:ShoppingCartService.Models.CustomerType">
             <summary>
             Customer type

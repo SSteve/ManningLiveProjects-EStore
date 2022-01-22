@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ShoppingCartService.DataAccess.Entities;
-using ShoppingCartService.Models;
 
 namespace ShoppingCartService.DataAccess
 {
